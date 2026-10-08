@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&display=swap');
+
+:root {
+  --ink: #231f2e;          /* الخلفية الداكنة والنص */
+  --paper: #f5f3f7;        /* خلفية الصفحة */
+  --accent: #6d4aa8;       /* اللون الأساسي (بنفسجي) */
+  --accent-light: #b79cf0; /* نفس اللون بس فاتح، للخلفيات الداكنة */
+  --soft: #e6def2;         /* خلفية خفيفة للمهارات */
+  --muted: #5b5468;        /* نص ثانوي */
+  --line: #ddd6e8;         /* الخطوط والحدود */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Readex Pro", Tahoma, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.9;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+header {
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+  padding: 4rem 1.5rem 0;
+}
+
+header h1 {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);  
+  font-weight: 600;
+}
+
+header h2 {
+  color: var(--accent-light);
+  font-weight: 300;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+header p {
+  max-width: 60ch;          
+  margin: 0 auto 1rem;
+  color: #d4cde2;
+}
+
+nav {
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, .15);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;          
+  justify-content: center;
+  gap: .25rem 2rem;
+  padding: 1rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: .25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s;
+}
+
+nav a:hover { border-color: var(--accent-light); }
+
+header a:focus-visible,
+footer a:focus-visible { outline-color: var(--accent-light); }
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 4rem 0;
+  scroll-margin-top: 1rem;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+section > h3 {
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+section p {
+  max-width: 65ch;
+  margin-bottom: 1rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+body > hr { display: none; }
+
+#skills ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+#skills li {
+  background: var(--soft);
+  padding: .5rem 1.1rem;
+  border-radius: 999px;
+}
+
+#projects,
+#services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+#projects > h2, #services > h2,
+#services > h3 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform .2s, box-shadow .2s;
+}
+
+article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(35, 31, 46, .1);
+}
+
+article h3 { font-size: 1.1rem; margin-bottom: .25rem; }
+
+article h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+
+article p { font-size: .95rem; }
+article p:last-child { margin-bottom: 0; }
+
+strong { color: var(--accent); }
+
+#contact a {
+  display: inline-block;
+  padding: .8rem 1.6rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .2s;
+}
+
+#contact a:hover { background: var(--ink); }
+
+#contact p:has(> a) {
+  display: inline-block;
+  margin: .5rem 0 0 .75rem;
+}
+
+footer {
+  background: var(--ink);
+  color: #d4cde2;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  article:hover { transform: none; }
+}
+
+@media (max-width: 800px) {
+  #projects,
+  #services { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  header { padding-top: 3rem; }
+  section { padding: 3rem 0; }
+
+  #projects,
+  #services { grid-template-columns: 1fr; }
+
+  #contact p:has(> a) { display: block; margin: .5rem 0 0; }
+  #contact a { display: block; text-align: center; }
+}
